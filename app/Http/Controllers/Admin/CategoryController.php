@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Traits\showproducts;
 use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -12,6 +13,7 @@ use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class CategoryController extends Controller
 {
+    use showproducts;
     /**
      * Display a listing of the resource.
      *
@@ -72,8 +74,6 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
-        $cate_products =category::findOrFail($id)->products;
-        return view('categories.show', compact('cate_products'));
     }
 
     /**

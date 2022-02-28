@@ -1,7 +1,7 @@
 @extends("layouts.admin")
 @section('content')
 <div class="container">
-    <h1 class="text-center">{{__('admin dashboard')}}</h1>
+    <h1 class="text-center">{{__('Dashboard')}}</h1>
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col">
           <div class="card">

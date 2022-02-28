@@ -66,6 +66,13 @@ color: var(--main-color);
     opacity: 1;
     transition: all .5s ease-in-out;
 }
+.info{
+    color: var(--sec-color);
+}
+footer{
+    color: var(--sec-color);
+    background-color: var(--dark);
+}
 /* rating */
 .rating-css div {
     color: #ffe400;

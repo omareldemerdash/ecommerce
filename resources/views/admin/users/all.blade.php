@@ -22,14 +22,15 @@
             <td>{{$user->email}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>
             <td class="d-flex">
-              {{-- <a href="{{route('users.showposts' , $user->id)}}" class="btn btn-dark">posts</a> --}}
               <a href="{{route('users.show' , $user->id)}}" class="btn btn-info me-2">show</a>
+              @if (Auth::user()->role_id == 1)
               <a href="{{route('users.edit' , $user->id)}}" class="btn btn-warning me-2">edit</a>
               <form method="post" action="{{route('users.destroy',$user->id)}}">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">delete</button>
               </form>
+              @endif
             </td>
           </tr>
           @endforeach

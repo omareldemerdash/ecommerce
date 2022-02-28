@@ -9,11 +9,12 @@
           <li class="nav-item">
             <a class="nav-link "  href="/">Home</a>
           </li>
-          
+          @if(Auth::user()->role_id != 3 )
+
           <li class="nav-item">
-            <a class="nav-link" href="#">link</a>
+            <a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a>
           </li>
-          
+          @endif
          
           
           
@@ -38,12 +39,7 @@
                         {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" 
-                            @if(Auth::user()->role_id == 1)
-                            href="{{route('admin.dashboard')}}"
-                            @endif
-                            >My Profile</a></li>
-                            <li><a class="dropdown-item" href="#">popular categories</a></li>
+                     
                         <li>
                             <hr class="dropdown-divider">
                         </li>

@@ -18,7 +18,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         $isAdmin = Auth::user()->role_id;
-        if($isAdmin == 3 || $isAdmin == 2){
+        if($isAdmin == 3){
          return redirect()->route('home');
         }
         return $next($request);

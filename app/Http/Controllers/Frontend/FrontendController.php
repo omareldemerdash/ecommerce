@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\category;
 use App\Models\Product;
+use App\Models\category;
+use Illuminate\Http\Request;
+use Munna\ShoppingCart\Cart;
+use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
@@ -44,10 +45,18 @@ class FrontendController extends Controller
             redirect('/')->with('alert', "no such category found");
         }
     }
-    // public function pop_category(){
+    public function addtocart($id)
+    {
+        $product = Product::findOrFail($id);
+        $product_id  = $product->id; // Required
+        $product_name = $product->name; // Required
+        $product_qty = $product->qty; // Required
+        $product_price = $product->selling_price; // Required
 
-    //     return view('welcome',compact('pop_category'));
-    // }
+
+        $cart = new Cart();
+        $cart->add($product_id, $product_name, $product_qty, $product_price);
+        
+        return view('frontend.viewproduct');
+    }
 }
-    // $featured_products = Product::where('trending','1')->take(15)->get();
-    // return view('welcome' , compact('featured_products'));

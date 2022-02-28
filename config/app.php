@@ -192,6 +192,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // ...
+        'Cart' => Munna\ShoppingCart\Facades\Cart::class,
     ])->toArray(),
 
 ];

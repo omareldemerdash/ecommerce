@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Product;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,8 +18,8 @@ class WishlistController extends Controller
     public function index()
     {
         //
-        $wishlist = Wishlist::where('user_id',Auth::id())->get();
-        return view('frontend.wishlist',);
+        $wishlist = Wishlist::where('user_id', Auth::id())->get();
+        return view('frontend.wishlist', compact('wishlist'));
     }
 
     /**
@@ -40,6 +41,14 @@ class WishlistController extends Controller
     public function store(Request $request)
     {
         //
+        $prod_id = $request->input('product_id');
+        if (Product::find($prod_id)) {
+            $wish = new Wishlist();
+            $wish->prod_id = $prod_id;
+            $wish->user_id = Auth::id();
+            $wish->save();
+            return redirect(route('wishlist.index'))->with('status', 'product added to wishlist');
+        }
     }
 
     /**
@@ -82,8 +91,13 @@ class WishlistController extends Controller
      * @param  \App\Models\Wishlist  $wishlist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Wishlist $wishlist)
+    public function destroy($prod_id)
     {
         //
+        if (Wishlist::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {
+            $Wishlistitem = Wishlist::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
+            $Wishlistitem->delete();
+            return redirect()->back();
+        }
     }
 }

@@ -27,7 +27,9 @@
                         <td>{{ $product->original_price }}</td>
                         <td>{{ $product->selling_price }}</td>
                         <td>{{ $product->created_at->diffForHumans() }}</td>
+                        @if (Auth::user()->role_id == 1)
                         <td>
+                            
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info mb-2">edit</a>
                             <form method="post" action="{{ route('products.destroy', $product->id) }}">
                                 @csrf
@@ -35,6 +37,7 @@
                                 <button type="submit" class="btn btn-danger">delete</button>
                             </form>
                         </td>
+                        @endif
                     </tr>
                 @endforeach
 

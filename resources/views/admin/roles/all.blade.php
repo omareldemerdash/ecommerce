@@ -17,22 +17,16 @@
           <tr>
             <th scope="row">1</th>
             <td>{{$role->name}}</td>
-            
+            @if (Auth::user()->role_id == 1)
             <td class="d-flex">
-              <a href="{{route('roles.show' , $role->id)}}" class="btn btn-info me-2">show users</a>
-              <a href="{{route('roles.edit' , $role->id)}}" class="btn btn-warning me-2">edit</a>
-              
-              <form method="post" action="{{route('users.destroy',$role->id)}}">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">delete</button>
-              </form>
+              <a href="{{route('roles.show' , $role->id)}}" class="btn btn-info me-2">show users</a>              
+           
             </td>
+            @endif
           </tr>
           @endforeach
           
         </tbody>
       </table>
-      <a class="btn btn-primary" href="{{route('roles.create')}}">add role</a>
     </div>
 @endsection
