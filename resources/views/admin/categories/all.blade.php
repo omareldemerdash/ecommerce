@@ -24,7 +24,6 @@
             <td>{{$category->description}}</td>
             <td>{{$category->created_at->diffForHumans()}}</td>
             <td>
-              <a href="{{route('categories.showproducts' , $category->id)}}" class="btn btn-info mb-2">show products</a>
               @if (Auth::user()->role_id == 1)
               <a href="{{route('categories.edit' , $category->id)}}" class="btn btn-info mb-2">edit</a>
               <form method="post" action="{{route('categories.destroy',$category->id)}}">

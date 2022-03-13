@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\Traits\showproducts;
 use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -13,7 +12,6 @@ use phpDocumentor\Reflection\PseudoTypes\True_;
 
 class CategoryController extends Controller
 {
-    use showproducts;
     /**
      * Display a listing of the resource.
      *

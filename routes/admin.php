@@ -29,7 +29,6 @@ Route::group([
 function(){
 	Route::middleware(['auth','isAdmin'])->prefix('admin')->group(function () {
         Route::get('/', [DashboardController::class ,'index'] )->name('admin.dashboard');
-        Route::get('/categories/{category}/products', [categoryController::class , 'showproducts'])->name('categories.showproducts');
         Route::resource('/users', UsersController::class);
         Route::resource('/roles', RoleController::class);
         Route::resource('/categories', CategoryController::class);

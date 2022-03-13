@@ -5,12 +5,12 @@
         </div>
         <div class="col-6 mt-3">
             <ul class="nav justify-content-end">
-                @if (Auth::user()->role_id != 3)
+                
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="{{ route('admin.dashboard') }}">My
                             Account</a>
                     </li>
-                @endif
+                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist<i
                             class="fa fa-heart"></i></a>

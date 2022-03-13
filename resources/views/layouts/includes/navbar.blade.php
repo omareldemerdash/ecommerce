@@ -9,12 +9,12 @@
           <li class="nav-item">
             <a class="nav-link "  href="/">Home</a>
           </li>
-          @if(Auth::user()->role_id != 3 )
+          
 
           <li class="nav-item">
             <a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a>
           </li>
-          @endif
+          
          
           
           

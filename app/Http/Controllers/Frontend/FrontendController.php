@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
-    // use showProducts;
     //
     public function index()
     {
